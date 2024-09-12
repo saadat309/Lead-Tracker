@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "Lead Tracker",
+  "description": "A Chrome extension to help you track your leads",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "conversion-rate.png"
+  },
+  "permissions": ["tabs"]
+}
