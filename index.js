@@ -40,8 +40,21 @@ function render(leads) {
                 <a target='_blank' href='${leads[i]}'>
                     ${leads[i]}
                 </a>
+                <button onclick='deleteProduct(${i})'>Delete</button>
             </li>
         `;
   }
   ulEl.innerHTML = listItems;
 }
+
+deleteProduct = (i) => {
+  if (confirm("Are you sure you want to delete this product?")) {
+    // remove the data from the data array
+    myLeads.splice(++i, 1);
+    // update the localStorage
+    localStorage.setItem("products", JSON.stringify(myLeads));
+    // fetch the data again
+    render(myLeads);
+  }
+  console.log("deleted");
+};
