@@ -1,3 +1,14 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+
+const firebaseConfig = {
+  databaseUrl: process.env.DATABASE_URL,
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+console.log(firebaseConfig);
+
 let myLeads = [];
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
@@ -40,21 +51,20 @@ function render(leads) {
                 <a target='_blank' href='${leads[i]}'>
                     ${leads[i]}
                 </a>
-                <button onclick='deleteProduct(${i})'>Delete</button>
             </li>
         `;
   }
   ulEl.innerHTML = listItems;
 }
 
-deleteProduct = (i) => {
-  if (confirm("Are you sure you want to delete this product?")) {
-    // remove the data from the data array
-    myLeads.splice(++i, 1);
-    // update the localStorage
-    localStorage.setItem("products", JSON.stringify(myLeads));
-    // fetch the data again
-    render(myLeads);
-  }
-  console.log("deleted");
-};
+// deleteProduct = (i) => {
+//   if (confirm("Are you sure you want to delete this product?")) {
+//     // remove the data from the data array
+//     myLeads.splice(++i, 1);
+//     // update the localStorage
+//     localStorage.setItem("products", JSON.stringify(myLeads));
+//     // fetch the data again
+//     render(myLeads);
+//   }
+//   console.log("deleted");
+// };
